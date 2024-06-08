@@ -1,0 +1,9 @@
+<app-login-layout  (submit) = "submit()" [disablePrimaryBtn]="!registerForm.valid">
+    <form [formGroup]="registerForm">
+        <app-login-input formControlName = "nome" titleName="Nome" formName="nome" placeholder="Yan Melo"></app-login-input>
+        <app-login-input formControlName = "cpf" titleName="Cpf" formName="cpf" placeholder="123456789-00"></app-login-input>
+        <app-login-select formControlName = "curso" formName="curso"></app-login-select>
+        <app-login-input formControlName = "email" titleName="Email" formName="email" type="email" placeholder="yanmelo@gmail.com"></app-login-input>
+        <app-login-input formControlName = "password" titleName="Senha" formName="password" type="password" placeholder="Digite sua senha"></app-login-input>
+    </form>
+</app-login-layout>

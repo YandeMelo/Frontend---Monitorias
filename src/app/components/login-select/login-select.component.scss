@@ -1,0 +1,19 @@
+.form-select{
+    display: flex;
+    flex-direction: column;
+
+    label {
+        font-size: 1.5rem;
+        color: white;
+    }
+    
+    .select-cursos{
+        font-size: 0.9rem;
+        height: 34px;
+        max-height: 34px;
+        width: 87.3%;
+        border: 2px solid rgb(184, 184, 184);
+        border-radius: 5px;
+        padding: 8px;
+    }
+}

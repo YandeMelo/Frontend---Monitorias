@@ -1,0 +1,16 @@
+<main>
+    <section class="loginSection">
+        <img class="logo" src="../../../assets/Logo.png">
+        <div class="avisos">
+        </div>
+        <div class="login">
+            <div class="formulario">
+                <ng-content></ng-content>
+                <div class="botao">
+                    <button (click)="submit()" [disabled]="disablePrimaryBtn">Entrar</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
