@@ -1,14 +1,40 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
-import { HomeComponent } from './pages/home/home.component';
-import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/inicio/login/login.component';
+import { HomeComponent } from './pages/inicio/home/home.component';
+import { RegisterComponent } from './pages/inicio/register/register.component';
 import { AuthGuard } from './guards/auth.guard';
+import { HomeAlunoComponent } from './pages/aluno/home-aluno/home-aluno.component';
+import { HomeProfessorComponent } from './pages/professor/home-professor/home-professor.component';
+import { MonitoriasDisponiveisComponent } from './pages/aluno/monitorias-disponiveis/monitorias-disponiveis.component';
 
 export const routes: Routes = [
     {
         path: "",
         component: HomeComponent,
-        canActivate: [AuthGuard]
+    },
+    {
+        path: "aluno",
+        component: HomeAlunoComponent,
+        canActivate: [AuthGuard],
+        data: {
+            expectedRoles: ['ROLE_ALUNO']
+        }
+    },
+    {
+        path: "aluno/monitorias",
+        component: MonitoriasDisponiveisComponent,
+        canActivate: [AuthGuard],
+        data: {
+            expectedRoles: ['ROLE_ALUNO']
+        }
+    },
+    {
+        path: "professor",
+        component: HomeProfessorComponent,
+        canActivate: [AuthGuard],
+        data: {
+            expectedRoles: ['ROLE_PROFESSOR']
+        }
     },
     {
         path: "login",

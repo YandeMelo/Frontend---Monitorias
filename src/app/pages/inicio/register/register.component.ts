@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
-import { LoginInputComponent } from '../../components/login-input/login-input.component';
+import { LoginInputComponent } from '../../../components/login-input/login-input.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { LoginLayoutComponent } from "../../components/login-layout/login-layout.component";
+import { LoginLayoutComponent } from "../../../components/login-layout/login-layout.component";
 import { Router } from '@angular/router';
-import { LoginService } from '../../services/login.service';
-import { LoginSelectComponent } from '../../components/login-select/login-select.component';
+import { LoginService } from '../../../services/login.service';
+import { LoginSelectComponent } from '../../../components/login-select/login-select.component';
 
 interface RegisterForm {
   nome: FormControl,

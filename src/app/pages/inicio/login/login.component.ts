@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { LoginInputComponent } from '../../components/login-input/login-input.component';
-import { LoginLayoutComponent } from '../../components/login-layout/login-layout.component';
+import { LoginInputComponent } from '../../../components/login-input/login-input.component';
+import { LoginLayoutComponent } from '../../../components/login-layout/login-layout.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { LoginService } from '../../services/login.service';
+import { LoginService } from '../../../services/login.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 interface LoginForm {
   email: FormControl,
@@ -24,6 +25,7 @@ export class LoginComponent {
   constructor (
     private loginService: LoginService,
     private router: Router,
+    private authService: AuthService
   ){
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -31,11 +33,16 @@ export class LoginComponent {
     })
   }
 
-  submit(){
+  submit() {
     this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
-      next: () => this.router.navigate([""]),
-      error: () => console.log("error")
-      
-    })
+      next: () => {
+        if (this.authService.hasRole(['ROLE_ALUNO'])) {
+          this.router.navigate(['/aluno']);
+        } else {
+          this.router.navigate(['/professor']);
+        } 
+      },
+      error: () => console.log('error')
+    });
   }
 }
