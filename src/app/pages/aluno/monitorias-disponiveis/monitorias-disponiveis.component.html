@@ -1,1 +1,12 @@
-<p>monitorias-disponiveis works!</p>
+<div class="container">
+    @for (monitoria of monitorias$; track monitoria) {
+        <div class="card">
+            <p><strong>{{monitoria.disciplina}}</strong></p>
+            <p>Professor: {{ monitoria.professorNome }}</p>
+            <p>Curso: {{ monitoria.curso }}</p>
+            <p>Semestre: {{ monitoria.semestre }}</p>
+            <p>Status: {{ monitoria.status }}</p>
+            <button>Candidatar</button>
+        </div>
+    }
+</div>
