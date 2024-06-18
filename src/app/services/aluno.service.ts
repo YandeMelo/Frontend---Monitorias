@@ -11,8 +11,8 @@ export class AlunoService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getMonitorias(): Observable<PageableResponse> {
-    return this.httpClient.get<PageableResponse>("http://localhost:8080/monitorias/disponiveis");
+  getMonitorias(page: number, size: number = 12): Observable<PageableResponse> {
+    return this.httpClient.get<PageableResponse>(`http://localhost:8080/monitorias/disponiveis?page=${page}&size=${size}`);
   }
 
 }

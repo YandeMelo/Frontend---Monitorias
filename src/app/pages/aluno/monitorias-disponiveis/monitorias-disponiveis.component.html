@@ -1,12 +1,35 @@
-<div class="container">
-    @for (monitoria of monitorias$; track monitoria) {
-        <div class="card">
-            <p><strong>{{monitoria.disciplina}}</strong></p>
-            <p>Professor: {{ monitoria.professorNome }}</p>
-            <p>Curso: {{ monitoria.curso }}</p>
-            <p>Semestre: {{ monitoria.semestre }}</p>
-            <p>Status: {{ monitoria.status }}</p>
-            <button>Candidatar</button>
+<body>
+    <div class="barralateral">
+        <div class="logo">
+            <img src="../../../assets/Logo.png">
         </div>
-    }
-</div>
+        <div class="navegacao">
+            <div class="navegar">
+                <button (click)="handleAlunoRedirect()">Início</button>
+            </div>
+            <div class="perfil">
+                <button>Configurações</button>
+                <button>Perfil</button>
+            </div>
+        </div>
+    </div>
+    <main>
+        <div class="card-container">
+            @for (monitoria of monitorias$ | paginate: { itemsPerPage: 12, currentPage: paginaAtual, totalItems: totalElements }; track monitoria) {
+                <div class="card">
+                    <ul>
+                        <li><strong>{{monitoria.disciplina}}</strong></li>
+                        <li>Professor: {{ monitoria.professorNome }}</li>
+                        <li>Curso: {{ monitoria.curso }}</li>
+                        <li>Semestre: {{ monitoria.semestre }}</li>
+                        <li>Status: {{ monitoria.status }}</li>
+                    </ul>
+                    <button class="candidatar">Candidatar</button>
+                </div>
+                }
+        </div>
+        <div class="paginacao">
+            <pagination-controls (pageChange)="pageChange($event)" previousLabel="Anterior" nextLabel="Próximo"></pagination-controls>
+        </div>
+    </main>
+</body>
