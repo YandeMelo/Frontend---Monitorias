@@ -3,6 +3,8 @@ import { AlunoService } from '../../../services/aluno.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CursoPipe } from '../../../pipes/curso.pipe';
+import { StatusPipe } from '../../../pipes/status.pipe';
 
 export interface PageableResponse {
   content: Monitoria[];
@@ -32,7 +34,7 @@ export interface Monitoria {
 @Component({
   selector: 'app-monitorias-disponiveis',
   standalone: true,
-  imports: [CommonModule, NgxPaginationModule],
+  imports: [CommonModule, NgxPaginationModule, CursoPipe, StatusPipe],
   templateUrl: './monitorias-disponiveis.component.html',
   styleUrl: './monitorias-disponiveis.component.scss'
 })
@@ -63,5 +65,10 @@ export class MonitoriasDisponiveisComponent {
 
   handleAlunoRedirect(): void {
     this.router.navigate(['/aluno']);
-}
+  }
+
+  handleCandidatarRedirect(monitoria: Monitoria) {
+    this.alunoService.setInfoMonitoria(monitoria);
+    this.router.navigate(['/aluno/monitorias/candidatar']);
+  }
 }

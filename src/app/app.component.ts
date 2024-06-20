@@ -10,5 +10,5 @@ import { LoginComponent } from './pages/inicio/login/login.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'monitorias-frontend';
+  title = 'Monitorias';
 }

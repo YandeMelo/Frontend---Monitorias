@@ -6,6 +6,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { HomeAlunoComponent } from './pages/aluno/home-aluno/home-aluno.component';
 import { HomeProfessorComponent } from './pages/professor/home-professor/home-professor.component';
 import { MonitoriasDisponiveisComponent } from './pages/aluno/monitorias-disponiveis/monitorias-disponiveis.component';
+import { CandidatarMonitoriaComponent } from './pages/aluno/candidatar-monitoria/candidatar-monitoria.component';
 
 export const routes: Routes = [
     {
@@ -23,6 +24,14 @@ export const routes: Routes = [
     {
         path: "aluno/monitorias",
         component: MonitoriasDisponiveisComponent,
+        canActivate: [AuthGuard],
+        data: {
+            expectedRoles: ['ROLE_ALUNO']
+        }
+    },
+    {
+        path: "aluno/monitorias/candidatar",
+        component: CandidatarMonitoriaComponent,
         canActivate: [AuthGuard],
         data: {
             expectedRoles: ['ROLE_ALUNO']
