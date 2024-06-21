@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Monitoria, PageableResponse } from '../pages/aluno/monitorias-disponiveis/monitorias-disponiveis.component';
+import { Candidatura } from '../pages/aluno/status-candidatura/status-candidatura.component';
 
 
 @Injectable({
@@ -26,6 +27,10 @@ export class AlunoService {
   infoMonitoria() {
     const teste = sessionStorage.getItem('monitoria');
     this.monitoriaSalva.next(JSON.parse(teste || "") as Monitoria);
+  }
+
+  getCandidatura(): Observable<Candidatura>{
+    return this.httpClient.get<Candidatura>(`http://localhost:8080/aluno/inscricao`);
   }
   
 }

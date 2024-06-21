@@ -11,7 +11,6 @@ export class UploadService {
   public candidatarAlunoMonitoria(file: File, monitoriaId: number) {
     const formData: FormData = new FormData();
     formData.append('historicoEscolar', file, file.name);
-
     return this.httpClient.post(`http://localhost:8080/monitorias/candidatar/${monitoriaId}`, formData);
   }
 

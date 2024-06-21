@@ -1,4 +1,3 @@
-import { style } from '@angular/animations';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({

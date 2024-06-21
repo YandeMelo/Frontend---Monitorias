@@ -29,10 +29,10 @@
 
             </div>
             <div class="historico-escolar">
-                <input class="arquivo" type="file" (change)="onFilechange($event)" accept=".pdf">
+                <input class="arquivo" type="file" (change)="onFilechange($event); arquivoAdicionado=true" accept=".pdf">
             </div>
             <div class="confirmar">
-                <button (click)="this.upload(monitoria?.id)" class="candidatar">Confirmar Candidatura</button>
+                <button [disabled]="!arquivoAdicionado" (click)="this.upload(monitoria?.id)" class="candidatar">Confirmar Candidatura</button>
             </div>
         </div>
     </main>

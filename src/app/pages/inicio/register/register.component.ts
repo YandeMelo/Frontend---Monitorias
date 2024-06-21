@@ -6,6 +6,7 @@ import { LoginLayoutComponent } from "../../../components/login-layout/login-lay
 import { Router } from '@angular/router';
 import { LoginService } from '../../../services/login.service';
 import { LoginSelectComponent } from '../../../components/login-select/login-select.component';
+import { ToastrService } from 'ngx-toastr';
 
 interface RegisterForm {
   nome: FormControl,
@@ -32,7 +33,7 @@ export class RegisterComponent {
   constructor(
     private router: Router,
     private loginService: LoginService,
-  ){
+    private toastrService: ToastrService  ){
     this.registerForm = new FormGroup({
       nome: new FormControl('', [Validators.required, Validators.minLength(3)]),
       cpf: new FormControl('', [Validators.required, Validators.minLength(12), Validators.maxLength(12)]),
@@ -58,8 +59,11 @@ export class RegisterComponent {
         this.registerForm.value.dataDesativacao,
         this.registerForm.value.tipoUsuario,
       ).subscribe({
-      next: () => this.router.navigate(["/login"]),
-      error: () => console.log("error")
+      next: () => {this.router.navigate(["/login"])
+                  this.toastrService.success("Cadastro realizado com sucesso!")
+      },
+                  
+      error: () => this.toastrService.error("Não foi possível realizar o cadastro!")
       
     })
   }

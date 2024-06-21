@@ -6,6 +6,7 @@ import { DatePipe } from '@angular/common';
 import { UploadService } from '../../../services/upload.service';
 import { CursoPipe } from '../../../pipes/curso.pipe';
 import { StatusPipe } from '../../../pipes/status.pipe';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-candidatar-monitoria',
@@ -16,9 +17,10 @@ import { StatusPipe } from '../../../pipes/status.pipe';
 })
 export class CandidatarMonitoriaComponent {
 
-  constructor(private router: Router, private alunoService: AlunoService, private uploadService: UploadService){}
+  constructor(private router: Router, private alunoService: AlunoService, private uploadService: UploadService, private toastrService: ToastrService){}
 
   monitoria: Monitoria | null = null;
+  arquivoAdicionado: boolean = false;
 
   ngOnInit(): void {
     this.alunoService.infoMonitoria();
@@ -32,19 +34,25 @@ export class CandidatarMonitoriaComponent {
   handleAlunoRedirect(): void {
     this.router.navigate(['/aluno']);
   }
-
+  
   file: File | undefined;
 
   onFilechange(event: any) {
-    console.log(event.target.files[0]);
     this.file = event.target.files[0];
   }
 
   upload(monitoriaId: number | undefined) {
     if (this.file) {
-      this.uploadService.candidatarAlunoMonitoria(this.file, monitoriaId || 0).subscribe();
+      if (this.file.type !== 'application/pdf') {
+        this.toastrService.error("Formato do arquivo deve ser PDF!")
+      } else {
+        this.uploadService.candidatarAlunoMonitoria(this.file, monitoriaId || 0).subscribe({
+          next: () => this.toastrService.success("Inscrição feita com sucesso!"),
+          error: () => this.toastrService.error("Você já está inscrito em uma monitoria!")
+        });
+        this.handleAlunoRedirect();
+      }
     }
-    this.handleAlunoRedirect();
   }
   
 }

@@ -15,4 +15,9 @@ export class HomeAlunoComponent {
   handleDisponiveisRedirect(): void {
     this.router.navigate(['/aluno/monitorias']);
   }
+
+  handleCandidaturaRedirect() {
+    this.router.navigate(['/aluno/candidatura']);
+  }
+
 }
