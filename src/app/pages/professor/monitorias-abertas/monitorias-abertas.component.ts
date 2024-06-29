@@ -5,6 +5,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { CursoPipe } from '../../../pipes/curso.pipe';
 import { StatusPipe } from '../../../pipes/status.pipe';
 import { DatePipe } from '@angular/common';
+import { ProfessorLayoutComponent } from '../../../components/professor-layout/professor-layout.component';
 
 export interface PageableResponseProfessor {
   content: MonitoriaAberta[];
@@ -35,7 +36,7 @@ interface MonitoriaAberta {
 @Component({
   selector: 'app-monitorias-abertas',
   standalone: true,
-  imports: [NgxPaginationModule, CursoPipe, StatusPipe, DatePipe],
+  imports: [ProfessorLayoutComponent, NgxPaginationModule, CursoPipe, StatusPipe, DatePipe],
   templateUrl: './monitorias-abertas.component.html',
   styleUrl: './monitorias-abertas.component.scss'
 })
@@ -67,7 +68,7 @@ export class MonitoriasAbertasComponent {
     this.getMonitorias(this.paginaAtual);
   }
 
-  handleInicioRedirect(){
-    this.router.navigate(['/professor']);
+  handleConsultarMonitoriaRedirect(){
+    this.router.navigate(['/professor/monitorias/consultar']);
   }
 }

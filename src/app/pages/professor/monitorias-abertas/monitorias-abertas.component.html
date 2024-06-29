@@ -1,42 +1,26 @@
-<body>
-    <div class="barralateral">
-        <div class="logo">
-            <img src="../../../assets/Logo.png">
-        </div>
-        <div class="navegacao">
-            <div class="navegar">
-                <button (click)="handleInicioRedirect()">Início</button>
-            </div>
-            <div class="perfil">
-                <button>Configurações</button>
-                <button>Perfil</button>
-            </div>
-        </div>
-    </div>
-    <main>
-        <div class="card-container">
-            @for (monitoria of monitorias$ | paginate: { itemsPerPage: 12, currentPage: paginaAtual, totalItems: totalElements }; track monitoria) {
-                <div class="card">
-                    <ul>
-                        <li><strong>{{monitoria.disciplina.toUpperCase()}}</strong></li>
-                        <li>Professor: {{ monitoria.professorNome }}</li>
-                        @if (monitoria.monitorNome) {
-                            <li>Monitor: {{ monitoria.monitorNome }}</li>
-                        }
-                        <li>Curso: {{ monitoria.curso | curso }}</li>
-                        <li>Semestre: {{ monitoria.semestre }}</li>
-                        <li>Status: {{ monitoria.status | status}}</li>
-                    </ul>
-                    @if (monitoria.monitorNome || monitoria.status !== "DISPONIVEL") {
-                        <button class="candidatar">Avaliar</button>
-                    } @else {
-                        <button class="candidatar">Consultar</button>
+<app-professor-layout>
+    <div class="card-container">
+        @for (monitoria of monitorias$ | paginate: { itemsPerPage: 12, currentPage: paginaAtual, totalItems: totalElements }; track monitoria) {
+            <div class="card">
+                <ul>
+                    <li><strong>{{monitoria.disciplina.toUpperCase()}}</strong></li>
+                    <li>Professor: {{ monitoria.professorNome }}</li>
+                    @if (monitoria.monitorNome) {
+                        <li>Monitor: {{ monitoria.monitorNome }}</li>
                     }
-                </div>
+                    <li>Curso: {{ monitoria.curso | curso }}</li>
+                    <li>Semestre: {{ monitoria.semestre }}</li>
+                    <li>Status: {{ monitoria.status | status}}</li>
+                </ul>
+                @if (monitoria.monitorNome || monitoria.status !== "DISPONIVEL") {
+                    <button class="candidatar">Avaliar</button>
+                } @else {
+                    <button (click)="handleConsultarMonitoriaRedirect()" class="candidatar">Consultar</button>
                 }
-        </div>
-        <div class="paginacao">
-            <pagination-controls (pageChange)="pageChange($event)" previousLabel="Anterior" nextLabel="Próximo"></pagination-controls>
-        </div>
-    </main>
-</body>
+            </div>
+            }
+    </div>
+    <div class="paginacao">
+        <pagination-controls (pageChange)="pageChange($event)" previousLabel="Anterior" nextLabel="Próximo"></pagination-controls>
+    </div>
+</app-professor-layout>

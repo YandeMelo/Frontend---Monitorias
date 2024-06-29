@@ -1,25 +1,10 @@
-<body>
-    <div class="barralateral">
-        <div class="logo">
-            <img src="../../../assets/Logo.png">
-        </div>
-        <div class="navegacao">
-            <div class="navegar">
-                <button (click)="handleInicioRedirect()">Inicio</button>
-            </div>
-            <div class="perfil">
-                <button>Configurações</button>
-                <button>Perfil</button>
-            </div>
-        </div>
-    </div>
-    <main>
-        <div class="container">
+<app-professor-layout>
+        <div class="card">
             <div class="dados">
                 <form [formGroup]="abrirMonitoriaForm">
                     <app-abrir-monitoria-input formControlName="disciplina" titleName="Disciplina" formName="disciplina"
                         placeholder="Engenharia de Software"></app-abrir-monitoria-input>
-
+    
                     <app-abrir-monitoria-input formControlName="semestre" titleName="Semestre" formName="semestre"
                         placeholder="2024.2"></app-abrir-monitoria-input>
                 </form>
@@ -28,5 +13,4 @@
                 <button [disabled]="!abrirMonitoriaForm.valid" (click)="abrirMonitoria()" class="abrir">Abrir Monitoria</button>
             </div>
         </div>
-    </main>
-</body>
+</app-professor-layout>
