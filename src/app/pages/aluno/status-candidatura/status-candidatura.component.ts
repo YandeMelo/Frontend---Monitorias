@@ -4,6 +4,7 @@ import { AlunoService } from '../../../services/aluno.service';
 import { CursoPipe } from '../../../pipes/curso.pipe';
 import { StatusPipe } from '../../../pipes/status.pipe';
 import { DatePipe } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 export interface Candidatura {
     monitoriaId: {
@@ -29,7 +30,8 @@ export class StatusCandidaturaComponent {
   monitoria: Candidatura | null = null;
 
   constructor(private router: Router,
-              private alunoService: AlunoService
+              private alunoService: AlunoService,
+              private toastrService: ToastrService
   ){}
   
   ngOnInit(): void {
@@ -48,7 +50,8 @@ export class StatusCandidaturaComponent {
         sessionStorage.setItem('candidatura', JSON.stringify(candidatura));
       },
       error => {
-        console.error('Erro ao buscar a candidatura:', error);
+        this.toastrService.error("Nenhuma candidatura encontrada.")
+        this.handleAlunoRedirect();
       }
     );
   }

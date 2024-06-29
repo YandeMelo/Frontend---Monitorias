@@ -8,6 +8,7 @@ import { HomeProfessorComponent } from './pages/professor/home-professor/home-pr
 import { MonitoriasDisponiveisComponent } from './pages/aluno/monitorias-disponiveis/monitorias-disponiveis.component';
 import { CandidatarMonitoriaComponent } from './pages/aluno/candidatar-monitoria/candidatar-monitoria.component';
 import { StatusCandidaturaComponent } from './pages/aluno/status-candidatura/status-candidatura.component';
+import { AbrirMonitoriaComponent } from './pages/professor/abrir-monitoria/abrir-monitoria.component';
 
 export const routes: Routes = [
     {
@@ -49,6 +50,14 @@ export const routes: Routes = [
     {
         path: "professor",
         component: HomeProfessorComponent,
+        canActivate: [AuthGuard],
+        data: {
+            expectedRoles: ['ROLE_PROFESSOR']
+        }
+    },
+    {
+        path: "professor/abrir-monitoria",
+        component: AbrirMonitoriaComponent,
         canActivate: [AuthGuard],
         data: {
             expectedRoles: ['ROLE_PROFESSOR']
