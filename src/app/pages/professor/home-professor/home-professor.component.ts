@@ -15,7 +15,11 @@ export class HomeProfessorComponent {
   }
 
   handleAbrirMonitoriaRedirect(): void {
-    this.router.navigate(['professor/abrir-monitoria']);
+    this.router.navigate(['professor/abrir']);
+  }
+
+  handleMonitoriasAbertasRedirect(): void {
+    this.router.navigate(['professor/monitorias']);
   }
 
 }

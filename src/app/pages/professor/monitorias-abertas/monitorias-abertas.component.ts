@@ -1,0 +1,73 @@
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProfessorService } from '../../../services/professor.service';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { CursoPipe } from '../../../pipes/curso.pipe';
+import { StatusPipe } from '../../../pipes/status.pipe';
+import { DatePipe } from '@angular/common';
+
+export interface PageableResponseProfessor {
+  content: MonitoriaAberta[];
+  pageable: any;
+  last: boolean;
+  totalPages: number;
+  totalElements: number;
+  size: number;
+  number: number;
+  sort: any;
+  first: boolean;
+  numberOfElements: number;
+  empty: boolean;
+}
+
+interface MonitoriaAberta {
+  id: number,
+  professorNome: string,
+  monitorNome: string,
+  disciplina: string,
+  curso: string,
+  semestre: string,
+  status: string,
+  dataCadastro: string,
+  ultimaAtualizacao: string
+}
+
+@Component({
+  selector: 'app-monitorias-abertas',
+  standalone: true,
+  imports: [NgxPaginationModule, CursoPipe, StatusPipe, DatePipe],
+  templateUrl: './monitorias-abertas.component.html',
+  styleUrl: './monitorias-abertas.component.scss'
+})
+export class MonitoriasAbertasComponent {
+
+  monitorias$: MonitoriaAberta[] = [];
+  paginaAtual: number = 1;
+  totalElements: number = 0;
+
+  constructor(private router: Router, private professorService: ProfessorService) {
+    
+  }
+
+  ngOnInit(): void {
+    this.getMonitorias(this.paginaAtual);
+  }
+
+  getMonitorias(page: number){
+    this.professorService.monitoriasAbertas(page-1).subscribe((res: PageableResponseProfessor)=>{
+      this.monitorias$ = res.content;
+      this.totalElements = res.totalElements;
+    },(error) => {
+      console.error('Erro ao buscar monitorias', error);
+    });
+  }
+
+  pageChange(newPage: number): void {
+    this.paginaAtual = newPage;
+    this.getMonitorias(this.paginaAtual);
+  }
+
+  handleInicioRedirect(){
+    this.router.navigate(['/professor']);
+  }
+}
