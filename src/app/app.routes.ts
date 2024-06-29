@@ -9,6 +9,7 @@ import { MonitoriasDisponiveisComponent } from './pages/aluno/monitorias-disponi
 import { CandidatarMonitoriaComponent } from './pages/aluno/candidatar-monitoria/candidatar-monitoria.component';
 import { StatusCandidaturaComponent } from './pages/aluno/status-candidatura/status-candidatura.component';
 import { AbrirMonitoriaComponent } from './pages/professor/abrir-monitoria/abrir-monitoria.component';
+import { MonitoriasAbertasComponent } from './pages/professor/monitorias-abertas/monitorias-abertas.component';
 
 export const routes: Routes = [
     {
@@ -56,7 +57,15 @@ export const routes: Routes = [
         }
     },
     {
-        path: "professor/abrir-monitoria",
+        path: "professor/monitorias",
+        component: MonitoriasAbertasComponent,
+        canActivate: [AuthGuard],
+        data: {
+            expectedRoles: ['ROLE_PROFESSOR']
+        }
+    },
+    {
+        path: "professor/abrir",
         component: AbrirMonitoriaComponent,
         canActivate: [AuthGuard],
         data: {

@@ -6,7 +6,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { CursoPipe } from '../../../pipes/curso.pipe';
 import { StatusPipe } from '../../../pipes/status.pipe';
 
-export interface PageableResponse {
+export interface PageableResponseAluno {
   content: Monitoria[];
   pageable: any;
   last: boolean;
@@ -50,7 +50,7 @@ export class MonitoriasDisponiveisComponent {
   }
 
   getMonitorias(page: number){
-    this.alunoService.getMonitorias(page-1).subscribe((res: PageableResponse)=>{
+    this.alunoService.getMonitorias(page-1).subscribe((res: PageableResponseAluno)=>{
       this.monitorias$ = res.content;
       this.totalElements = res.totalElements;
     },(error) => {

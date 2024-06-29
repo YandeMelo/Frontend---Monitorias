@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Monitoria, PageableResponse } from '../pages/aluno/monitorias-disponiveis/monitorias-disponiveis.component';
+import { Monitoria, PageableResponseAluno } from '../pages/aluno/monitorias-disponiveis/monitorias-disponiveis.component';
 import { Candidatura } from '../pages/aluno/status-candidatura/status-candidatura.component';
 
 
@@ -12,8 +12,8 @@ export class AlunoService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getMonitorias(page: number, size: number = 12): Observable<PageableResponse> {
-    return this.httpClient.get<PageableResponse>(`http://localhost:8080/monitorias/disponiveis?page=${page}&size=${size}`);
+  getMonitorias(page: number, size: number = 12): Observable<PageableResponseAluno> {
+    return this.httpClient.get<PageableResponseAluno>(`http://localhost:8080/monitorias/disponiveis?page=${page}&size=${size}`);
   }
 
   private monitoriaSalva = new BehaviorSubject<Monitoria | null>(null);
