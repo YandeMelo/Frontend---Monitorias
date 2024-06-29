@@ -5,6 +5,7 @@ import { CursoPipe } from '../../../pipes/curso.pipe';
 import { StatusPipe } from '../../../pipes/status.pipe';
 import { DatePipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { AlunoLayoutComponent } from '../../../components/aluno-layout/aluno-layout.component';
 
 export interface Candidatura {
     monitoriaId: {
@@ -21,7 +22,7 @@ export interface Candidatura {
 @Component({
   selector: 'app-status-candidatura',
   standalone: true,
-  imports: [CursoPipe, StatusPipe, DatePipe],
+  imports: [AlunoLayoutComponent, CursoPipe, StatusPipe, DatePipe],
   templateUrl: './status-candidatura.component.html',
   styleUrl: './status-candidatura.component.scss'
 })
@@ -51,14 +52,9 @@ export class StatusCandidaturaComponent {
       },
       error => {
         this.toastrService.error("Nenhuma candidatura encontrada.")
-        this.handleAlunoRedirect();
+        this.router.navigate(['/aluno']);
       }
     );
   }
 
-  handleAlunoRedirect(): void {
-    this.router.navigate(['/aluno']);
-  }
-
-  
 }

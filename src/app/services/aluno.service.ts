@@ -25,8 +25,8 @@ export class AlunoService {
   }
 
   infoMonitoria() {
-    const teste = sessionStorage.getItem('monitoria');
-    this.monitoriaSalva.next(JSON.parse(teste || "") as Monitoria);
+    const monitoria = sessionStorage.getItem('monitoria');
+    this.monitoriaSalva.next(JSON.parse(monitoria || "") as Monitoria);
   }
 
   getCandidatura(): Observable<Candidatura>{

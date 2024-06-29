@@ -7,11 +7,12 @@ import { UploadService } from '../../../services/upload.service';
 import { CursoPipe } from '../../../pipes/curso.pipe';
 import { StatusPipe } from '../../../pipes/status.pipe';
 import { ToastrService } from 'ngx-toastr';
+import { AlunoLayoutComponent } from '../../../components/aluno-layout/aluno-layout.component';
 
 @Component({
   selector: 'app-candidatar-monitoria',
   standalone: true,
-  imports: [DatePipe, CursoPipe, StatusPipe],
+  imports: [AlunoLayoutComponent, DatePipe, CursoPipe, StatusPipe],
   templateUrl: './candidatar-monitoria.component.html',
   styleUrl: './candidatar-monitoria.component.scss'
 })
@@ -31,10 +32,6 @@ export class CandidatarMonitoriaComponent {
     sessionStorage.removeItem('monitoria');
   }
 
-  handleAlunoRedirect(): void {
-    this.router.navigate(['/aluno']);
-  }
-  
   file: File | undefined;
 
   onFilechange(event: any) {
@@ -50,7 +47,7 @@ export class CandidatarMonitoriaComponent {
           next: () => this.toastrService.success("Inscrição feita com sucesso!"),
           error: () => this.toastrService.error("Você já está inscrito em uma monitoria!")
         });
-        this.handleAlunoRedirect();
+        this.router.navigate(['/aluno']);
       }
     }
   }
