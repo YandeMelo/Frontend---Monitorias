@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Monitoria } from '../monitorias-disponiveis/monitorias-disponiveis.component';
-import { AlunoService } from '../../../services/aluno.service';
 import { DatePipe } from '@angular/common';
-import { UploadService } from '../../../services/upload.service';
-import { CursoPipe } from '../../../pipes/curso.pipe';
-import { StatusPipe } from '../../../pipes/status.pipe';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AlunoLayoutComponent } from '../../../components/aluno-layout/aluno-layout.component';
+import { CursoPipe } from '../../../pipes/curso.pipe';
+import { StatusPipe } from '../../../pipes/status.pipe';
+import { AlunoService } from '../../../services/aluno.service';
+import { UploadService } from '../../../services/upload.service';
+import { Monitoria } from '../monitorias-disponiveis/monitorias-disponiveis.component';
 
 @Component({
   selector: 'app-candidatar-monitoria',
@@ -21,8 +21,7 @@ export class CandidatarMonitoriaComponent {
   constructor(private router: Router,
     private alunoService: AlunoService,
     private uploadService: UploadService,
-    private toastrService: ToastrService,
-    private activatedRoute: ActivatedRoute) { }
+    private toastrService: ToastrService) { }
 
   monitoria: Monitoria | null = null;
   arquivoAdicionado: boolean = false;
