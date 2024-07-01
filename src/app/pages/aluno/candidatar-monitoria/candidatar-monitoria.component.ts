@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Monitoria } from '../monitorias-disponiveis/monitorias-disponiveis.component';
 import { AlunoService } from '../../../services/aluno.service';
 import { DatePipe } from '@angular/common';
@@ -18,18 +18,20 @@ import { AlunoLayoutComponent } from '../../../components/aluno-layout/aluno-lay
 })
 export class CandidatarMonitoriaComponent {
 
-  constructor(private router: Router, private alunoService: AlunoService, private uploadService: UploadService, private toastrService: ToastrService){}
+  constructor(private router: Router,
+    private alunoService: AlunoService,
+    private uploadService: UploadService,
+    private toastrService: ToastrService,
+    private activatedRoute: ActivatedRoute) { }
 
   monitoria: Monitoria | null = null;
   arquivoAdicionado: boolean = false;
 
   ngOnInit(): void {
-    this.alunoService.infoMonitoria();
-    this.alunoService.monitoriaAtual.subscribe(info => this.monitoria = info)
-  }
-
-  ngOnDestroy() {
-    sessionStorage.removeItem('monitoria');
+    const idMonitoria = history.state.idMonitoria;
+    this.alunoService.infoMonitoria(idMonitoria).subscribe((res: Monitoria) => {
+      this.monitoria = res;
+    });
   }
 
   file: File | undefined;
@@ -51,5 +53,5 @@ export class CandidatarMonitoriaComponent {
       }
     }
   }
-  
+
 }

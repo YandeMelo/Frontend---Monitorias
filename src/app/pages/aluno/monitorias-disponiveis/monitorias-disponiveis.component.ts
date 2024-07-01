@@ -64,8 +64,7 @@ export class MonitoriasDisponiveisComponent {
     this.getMonitorias(this.paginaAtual);
   }
 
-  handleCandidatarRedirect(monitoria: Monitoria) {
-    this.alunoService.setInfoMonitoria(monitoria);
-    this.router.navigate(['/aluno/monitorias/candidatar']);
+  handleCandidatarRedirect(idMonitoria: number) {
+    this.router.navigate(['/aluno/monitorias/candidatar'], { state: { idMonitoria } });
   }
 }
