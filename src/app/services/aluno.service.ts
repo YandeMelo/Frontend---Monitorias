@@ -18,21 +18,12 @@ export class AlunoService {
     return this.httpClient.get<PageableResponseAluno>(`${this.apiUrl}/monitorias/disponiveis?page=${page}&size=${size}`);
   }
 
-  private monitoriaSalva = new BehaviorSubject<Monitoria | null>(null);
-  monitoriaAtual = this.monitoriaSalva.asObservable();
-
-  setInfoMonitoria(monitoria: Monitoria) {
-    sessionStorage.setItem('monitoria', JSON.stringify(monitoria));
-    this.monitoriaSalva.next(monitoria);
+  infoMonitoria(idMonitoria: number): Observable<Monitoria> {
+    return this.httpClient.get<Monitoria>(`${this.apiUrl}/monitorias/info/${idMonitoria}`);
   }
 
-  infoMonitoria() {
-    const monitoria = sessionStorage.getItem('monitoria');
-    this.monitoriaSalva.next(JSON.parse(monitoria || "") as Monitoria);
-  }
-
-  getCandidatura(): Observable<Candidatura>{
+  getCandidatura(): Observable<Candidatura> {
     return this.httpClient.get<Candidatura>(`${this.apiUrl}/aluno/inscricao`);
   }
-  
+
 }

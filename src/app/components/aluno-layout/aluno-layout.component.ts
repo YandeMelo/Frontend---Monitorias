@@ -14,6 +14,6 @@ export class AlunoLayoutComponent {
     
   }
   handleInicioRedirect(){
-    this.router.navigate(['/professor']);
+    this.router.navigate(['/aluno']);
   }
 }

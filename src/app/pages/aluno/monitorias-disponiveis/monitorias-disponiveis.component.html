@@ -9,7 +9,7 @@
                     <li>Semestre: {{ monitoria.semestre }}</li>
                     <li>Status: {{ monitoria.status | status}}</li>
                 </ul>
-                <button (click)="handleCandidatarRedirect(monitoria)" class="candidatar">Candidatar</button>
+                <button (click)="handleCandidatarRedirect(monitoria.id)" class="candidatar">Candidatar</button>
             </div>
             }
     </div>
