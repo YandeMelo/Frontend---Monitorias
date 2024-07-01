@@ -8,16 +8,18 @@ import { PageableResponseProfessor } from '../pages/professor/monitorias-abertas
 })
 export class ProfessorService {
 
+  apiUrl: string = "https://monitorias-api.onrender.com";
+
   constructor(private httpClient: HttpClient) { }
 
   abrirMonitoria(disciplina: string, semestre: string){
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-    return this.httpClient.post(`http://localhost:8080/monitorias/abrir`, {disciplina, semestre}, {headers});
+    return this.httpClient.post(`${this.apiUrl}/monitorias/abrir`, {disciplina, semestre}, {headers});
   }
 
   monitoriasAbertas(page: number, size: number = 12): Observable<PageableResponseProfessor> {
-    return this.httpClient.get<PageableResponseProfessor>(`http://localhost:8080/professor/monitorias?page=${page}&size=${size}`);
+    return this.httpClient.get<PageableResponseProfessor>(`${this.apiUrl}/professor/monitorias?page=${page}&size=${size}`);
   }
 }

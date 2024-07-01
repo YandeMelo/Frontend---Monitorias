@@ -10,10 +10,12 @@ import { Candidatura } from '../pages/aluno/status-candidatura/status-candidatur
 })
 export class AlunoService {
 
+  apiUrl: string = "https://monitorias-api.onrender.com";
+
   constructor(private httpClient: HttpClient) { }
 
   getMonitorias(page: number, size: number = 12): Observable<PageableResponseAluno> {
-    return this.httpClient.get<PageableResponseAluno>(`http://localhost:8080/monitorias/disponiveis?page=${page}&size=${size}`);
+    return this.httpClient.get<PageableResponseAluno>(`${this.apiUrl}/monitorias/disponiveis?page=${page}&size=${size}`);
   }
 
   private monitoriaSalva = new BehaviorSubject<Monitoria | null>(null);
@@ -30,7 +32,7 @@ export class AlunoService {
   }
 
   getCandidatura(): Observable<Candidatura>{
-    return this.httpClient.get<Candidatura>(`http://localhost:8080/aluno/inscricao`);
+    return this.httpClient.get<Candidatura>(`${this.apiUrl}/aluno/inscricao`);
   }
   
 }

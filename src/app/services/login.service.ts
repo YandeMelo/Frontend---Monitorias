@@ -7,6 +7,7 @@ import { tap } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
+  apiUrl: string = "https://monitorias-api.onrender.com";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -15,7 +16,7 @@ export class LoginService {
       'Content-Type': 'application/json',
     });
 
-    return this.httpClient.post<LoginResponse>("http://localhost:8080/auth/login", { email, password }, { headers }).pipe(
+    return this.httpClient.post<LoginResponse>(`${this.apiUrl}/auth/login`, { email, password }, { headers }).pipe(
       tap((value) => {
         sessionStorage.setItem("auth-token", value.token);
       })
@@ -27,6 +28,6 @@ export class LoginService {
       'Content-Type': 'application/json',
     });
 
-    return this.httpClient.post<LoginResponse>("http://localhost:8080/auth/register", { nome, cpf, curso, email, password, fotoPerfil, ativo, dataDesativacao, tipoUsuario }, { headers })
+    return this.httpClient.post<LoginResponse>(`${this.apiUrl}/auth/register`, { nome, cpf, curso, email, password, fotoPerfil, ativo, dataDesativacao, tipoUsuario }, { headers })
   }
 }
