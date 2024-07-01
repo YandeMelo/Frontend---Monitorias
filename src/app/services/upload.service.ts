@@ -6,12 +6,14 @@ import { Injectable } from '@angular/core';
 })
 export class UploadService {
 
+  apiUrl: string = "https://monitorias-api.onrender.com";
+
   constructor(private httpClient: HttpClient) { }
 
   public candidatarAlunoMonitoria(file: File, monitoriaId: number) {
     const formData: FormData = new FormData();
     formData.append('historicoEscolar', file, file.name);
-    return this.httpClient.post(`http://localhost:8080/monitorias/candidatar/${monitoriaId}`, formData);
+    return this.httpClient.post(`${this.apiUrl}/monitorias/candidatar/${monitoriaId}`, formData);
   }
 
 }
