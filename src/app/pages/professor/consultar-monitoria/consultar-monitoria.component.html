@@ -1,3 +1,23 @@
 <app-professor-layout>
-    
+    <div class="container">
+        <div class="apagar">
+            <button (click)="confirmDelete()">Apagar Monitoria</button>
+        </div>
+        <div class="monitoria-info">
+            <div class="title">
+                <h2>{{monitoria?.disciplina}}</h2>
+            </div>
+            <ul>
+                <li>Professor: {{monitoria?.professorNome}}</li>
+                <li>Curso: {{monitoria?.curso | curso}}</li>
+                <li>Semestre: {{monitoria?.semestre}}</li>
+                <li>Status: {{monitoria?.status| status}}</li>
+                <li>Data do Cadastro: {{monitoria?.dataCadastro| date: 'dd/MM/yyyy'}}</li>
+                <li>Última Atualização: {{monitoria?.ultimaAtualizacao | date: 'dd/MM/yyyy'}}</li>
+            </ul>
+        </div>
+        <div class="candidatos">
+            <button>Consultar Candidatos</button>
+        </div>
+    </div>
 </app-professor-layout>

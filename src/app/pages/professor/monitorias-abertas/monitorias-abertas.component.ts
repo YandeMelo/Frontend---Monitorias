@@ -6,6 +6,7 @@ import { CursoPipe } from '../../../pipes/curso.pipe';
 import { StatusPipe } from '../../../pipes/status.pipe';
 import { DatePipe } from '@angular/common';
 import { ProfessorLayoutComponent } from '../../../components/professor-layout/professor-layout.component';
+import { state } from '@angular/animations';
 
 export interface PageableResponseProfessor {
   content: MonitoriaAberta[];
@@ -68,7 +69,7 @@ export class MonitoriasAbertasComponent {
     this.getMonitorias(this.paginaAtual);
   }
 
-  handleConsultarMonitoriaRedirect(){
-    this.router.navigate(['/professor/monitorias/consultar']);
+  handleConsultarMonitoriaRedirect(idMonitoria: number){
+    this.router.navigate(['/professor/monitorias/consultar'],  {state: {idMonitoria}});
   }
 }

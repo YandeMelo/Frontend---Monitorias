@@ -8,7 +8,7 @@ import { PageableResponseProfessor } from '../pages/professor/monitorias-abertas
 })
 export class ProfessorService {
 
-  apiUrl: string = "https://monitorias-api.onrender.com";
+  apiUrl: string = "http://localhost:8080";
 
   constructor(private httpClient: HttpClient) { }
 
