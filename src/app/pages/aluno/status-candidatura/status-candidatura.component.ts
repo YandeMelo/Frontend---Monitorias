@@ -36,19 +36,13 @@ export class StatusCandidaturaComponent {
   ){}
   
   ngOnInit(): void {
-    if (sessionStorage.getItem('candidatura')) {
-        const candidatura = sessionStorage.getItem('candidatura');
-        this.monitoria = JSON.parse(candidatura || "") as Candidatura;
-    } else {
-        this.getCandidatura();
-    }
+    this.getCandidatura();
   }
   
   getCandidatura(): void {
     this.alunoService.getCandidatura().subscribe(
       (candidatura: Candidatura) => {
         this.monitoria = candidatura;
-        sessionStorage.setItem('candidatura', JSON.stringify(candidatura));
       },
       error => {
         this.toastrService.error("Nenhuma candidatura encontrada.")
