@@ -10,7 +10,8 @@ import { Candidatura } from '../pages/aluno/status-candidatura/status-candidatur
 })
 export class AlunoService {
 
-  apiUrl: string = "https://monitorias-api.onrender.com";
+  // apiUrl: string = "https://monitorias-api.onrender.com";
+  apiUrl: string = "http://localhost:8080";
 
   constructor(private httpClient: HttpClient) { }
 

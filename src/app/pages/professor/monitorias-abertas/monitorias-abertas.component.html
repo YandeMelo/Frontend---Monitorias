@@ -15,7 +15,7 @@
                 @if (monitoria.monitorNome || monitoria.status !== "DISPONIVEL") {
                     <button class="candidatar">Avaliar</button>
                 } @else {
-                    <button (click)="handleConsultarMonitoriaRedirect()" class="candidatar">Consultar</button>
+                    <button (click)="handleConsultarMonitoriaRedirect(monitoria.id)" class="candidatar">Consultar</button>
                 }
             </div>
             }

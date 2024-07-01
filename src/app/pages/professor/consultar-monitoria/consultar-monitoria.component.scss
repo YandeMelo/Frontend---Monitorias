@@ -1,0 +1,76 @@
+
+.container {
+    height: 45vh;
+    width: 29vw;
+    border-radius: 5px;
+    background-color: rgb(248, 233, 233);
+    border: 5px solid #99baf8;
+    display: flex;
+    flex-direction: column;
+    margin-right: 100px;
+}
+
+.monitoria-info {
+    height: 60%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    ul, li {
+        text-decoration: none;
+        color: white;
+        list-style: none;
+        color: black;
+        padding: 2px;
+    }
+}
+
+.apagar {
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    button {
+        cursor: pointer;
+        height: 50%;
+        width: 30%;
+        margin-right: 30px;
+        background-color: #f3eae8;
+        color: rgb(255, 59, 59);
+        border: 3px solid rgb(253, 102, 102);
+        border-radius: 35px;
+        margin-top: 10px;
+    }
+}
+
+.candidatos {
+    height: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+        height: 60%;
+        width: 50%;
+        background-color: #f3eae8;
+        border: 3px solid #99baf8;
+        border-radius: 35px;
+        margin-top: 10px; 
+    }
+}
+
+.title {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+::ng-deep main {
+    justify-content: center;
+    align-items: center;
+}
