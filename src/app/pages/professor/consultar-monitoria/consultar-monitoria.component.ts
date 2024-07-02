@@ -5,11 +5,13 @@ import { CursoPipe } from '../../../pipes/curso.pipe';
 import { StatusPipe } from '../../../pipes/status.pipe';
 import { DatePipe } from '@angular/common';
 import { AlunoService } from '../../../services/aluno.service';
+import { ConfirmationDialogComponent } from '../../../components/confirmation-dialog/confirmation-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-consultar-monitoria',
   standalone: true,
-  imports: [ProfessorLayoutComponent, CursoPipe, StatusPipe, DatePipe],
+  imports: [ProfessorLayoutComponent, CursoPipe, StatusPipe, DatePipe, ConfirmationDialogComponent, MatDialog],
   templateUrl: './consultar-monitoria.component.html',
   styleUrl: './consultar-monitoria.component.scss'
 })
@@ -17,7 +19,9 @@ export class ConsultarMonitoriaComponent {
 
   monitoria: Monitoria | null = null;
   
-  constructor(private alunoService: AlunoService) {
+  constructor(private alunoService: AlunoService,
+              private dialog: MatDialog
+  ) {
     
   }
 
@@ -29,9 +33,16 @@ export class ConsultarMonitoriaComponent {
   }
 
   confirmDelete(): void {
-    if (window.confirm('Tem certeza que deseja deletar?')) {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: "Tem certeza que deseja remover essa monitoria?",
+    });
 
-    }
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        console.log("Apagando monitoria...")
+      }
+    });
   }
+  
 
 }
