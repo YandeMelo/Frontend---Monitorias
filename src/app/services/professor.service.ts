@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PageableResponseMonitoria } from '../pages/professor/monitorias-abertas/monitorias-abertas.component';
 import { PageableResponseProfessor } from '../pages/professor/consultar-candidatos/consultar-candidatos.component';
+import { Monitoria } from '../pages/aluno/monitorias-disponiveis/monitorias-disponiveis.component';
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import { PageableResponseProfessor } from '../pages/professor/consultar-candidat
 })
 export class ProfessorService {
 
-  apiUrl: string = "https://monitorias-api.onrender.com";
+  private apiUrl: string = "https://monitorias-api.onrender.com";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -29,4 +30,10 @@ export class ProfessorService {
     return this.httpClient.get<PageableResponseProfessor>(`${this.apiUrl}/professor/candidatos/${idMonitoria}?page=${page}&size=${size}`);
   }
 
+  cancelarMonitoria(idMonitoria:number): Observable<Monitoria>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.httpClient.put<Monitoria>(`${this.apiUrl}/monitorias/suspender/${idMonitoria}`, {headers});
+  }
 }

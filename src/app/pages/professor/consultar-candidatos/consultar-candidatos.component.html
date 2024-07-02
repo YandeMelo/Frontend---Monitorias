@@ -9,7 +9,9 @@
                     <li>{{candidato.dataSolicitacao | date: "dd/MM/yyyy"}}</li>
                     <li>{{candidato.statusCandidatura | status}}</li>
                 </ul>
-                <button class="avaliar">Avaliar</button>
+                @if (candidato.statusCandidatura !== "CANCELADO") {
+                    <button class="avaliar">Avaliar</button>
+                }
             </div>
         }
     </div>

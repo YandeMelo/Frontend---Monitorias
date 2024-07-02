@@ -1,11 +1,13 @@
 <app-professor-layout>
     <div class="container">
         <div class="apagar">
-            <button (click)="confirmDelete()">Apagar Monitoria</button>
+            @if (monitoria?.status === "DISPONIVEL") {
+                <button (click)="confirmDelete()">Cancelar Monitoria</button>
+            }
         </div>
         <div class="monitoria-info">
             <div class="title">
-                <h2>{{monitoria?.disciplina}}</h2>
+                <h2>{{monitoria?.disciplina?.toUpperCase()}}</h2>
             </div>
             <ul>
                 <li>Professor: {{monitoria?.professorNome}}</li>

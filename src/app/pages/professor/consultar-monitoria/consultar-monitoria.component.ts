@@ -8,6 +8,7 @@ import { StatusPipe } from '../../../pipes/status.pipe';
 import { AlunoService } from '../../../services/aluno.service';
 import { Monitoria } from '../../aluno/monitorias-disponiveis/monitorias-disponiveis.component';
 import { Router } from '@angular/router';
+import { ProfessorService } from '../../../services/professor.service';
 
 
 
@@ -23,6 +24,7 @@ export class ConsultarMonitoriaComponent {
   monitoria: Monitoria | null = null;
   
   constructor(
+    private professorService: ProfessorService,
     private alunoService: AlunoService,
     private dialog: MatDialog,
     private router: Router
@@ -39,14 +41,16 @@ export class ConsultarMonitoriaComponent {
   
   confirmDelete(): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      data: "Tem certeza que deseja remover essa monitoria?",
+      data: "Tem certeza que deseja cancelar essa monitoria?",
       width: "350px",
       position: {left: '43.5%'}
     });
     
     dialogRef.afterClosed().subscribe((result: boolean) => {
-      if (result) {
-        console.log("Apagando monitoria...")
+      if (result && this.monitoria?.id) {
+        this.professorService.cancelarMonitoria(this.monitoria.id).subscribe((res: Monitoria)=>{
+          this.monitoria = res;
+        });
       }
     });
   }

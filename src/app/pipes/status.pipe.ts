@@ -9,7 +9,7 @@ export class StatusPipe implements PipeTransform {
   private statusMap: { [key: string]: string } = {
       "DISPONIVEL" : "Disponível",
       "ANDAMENTO" : "Andamento",
-      "SUSPENSA" : "Suspensa",
+      "SUSPENSA" : "Cancelada",
       "FINALIZADA" : "Finalizada",
       "APROVADO" : "Aprovado",
       "CANCELADO" : "Cancelado",
