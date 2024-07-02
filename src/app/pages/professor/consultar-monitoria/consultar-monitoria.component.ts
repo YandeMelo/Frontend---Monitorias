@@ -11,7 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-consultar-monitoria',
   standalone: true,
-  imports: [ProfessorLayoutComponent, CursoPipe, StatusPipe, DatePipe, ConfirmationDialogComponent, MatDialog],
+  imports: [ProfessorLayoutComponent, CursoPipe, StatusPipe, DatePipe, ConfirmationDialogComponent],
   templateUrl: './consultar-monitoria.component.html',
   styleUrl: './consultar-monitoria.component.scss'
 })
@@ -35,6 +35,8 @@ export class ConsultarMonitoriaComponent {
   confirmDelete(): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       data: "Tem certeza que deseja remover essa monitoria?",
+      width: "350px",
+      position: {left: '43.5%'}
     });
 
     dialogRef.afterClosed().subscribe((result: boolean) => {
