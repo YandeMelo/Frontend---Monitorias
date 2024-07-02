@@ -1,14 +1,13 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProfessorService } from '../../../services/professor.service';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ProfessorLayoutComponent } from '../../../components/professor-layout/professor-layout.component';
 import { CursoPipe } from '../../../pipes/curso.pipe';
 import { StatusPipe } from '../../../pipes/status.pipe';
-import { DatePipe } from '@angular/common';
-import { ProfessorLayoutComponent } from '../../../components/professor-layout/professor-layout.component';
-import { state } from '@angular/animations';
+import { ProfessorService } from '../../../services/professor.service';
 
-export interface PageableResponseProfessor {
+export interface PageableResponseMonitoria {
   content: MonitoriaAberta[];
   pageable: any;
   last: boolean;
@@ -56,7 +55,7 @@ export class MonitoriasAbertasComponent {
   }
 
   getMonitorias(page: number){
-    this.professorService.monitoriasAbertas(page-1).subscribe((res: PageableResponseProfessor)=>{
+    this.professorService.monitoriasAbertas(page-1).subscribe((res: PageableResponseMonitoria)=>{
       this.monitorias$ = res.content;
       this.totalElements = res.totalElements;
     },(error) => {

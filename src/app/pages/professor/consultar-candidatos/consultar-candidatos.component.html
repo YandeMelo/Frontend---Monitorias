@@ -1,0 +1,19 @@
+<app-professor-layout>
+    <div class="card-container">
+        @for (candidato of candidatos$ | paginate: { itemsPerPage: 12, currentPage: paginaAtual, totalItems: totalElements }; track candidato) {
+            <div class="card">
+                <ul>
+                    <li>{{candidato.nome}}</li>
+                    <li>{{candidato.email}}</li>
+                    <li>{{candidato.curso | curso}}</li>
+                    <li>{{candidato.dataSolicitacao | date: "dd/MM/yyyy"}}</li>
+                    <li>{{candidato.statusCandidatura | status}}</li>
+                </ul>
+                <button class="avaliar">Avaliar</button>
+            </div>
+        }
+    </div>
+    <div class="paginacao">
+        <pagination-controls (pageChange)="pageChange($event)" previousLabel="Anterior" nextLabel="Próximo"></pagination-controls>
+    </div>
+</app-professor-layout>
