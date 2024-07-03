@@ -41,4 +41,8 @@ export class ProfessorService {
   avaliarCandidato(idMonitoria: number, idCandidato: number): Observable<Candidato>{
     return this.httpClient.get<Candidato>(`${this.apiUrl}/professor/avaliar/${idCandidato}/${idMonitoria}`);
   }
+  
+  baixarHistorico(idHistorico: number){
+    return this.httpClient.get(`${this.apiUrl}/professor/historico/${idHistorico}`, {responseType: 'blob'});
+  }
 }

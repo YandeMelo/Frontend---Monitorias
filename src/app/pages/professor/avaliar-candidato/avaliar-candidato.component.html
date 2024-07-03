@@ -13,7 +13,7 @@
             </ul>
         </div>
         <div class="historico-escolar">
-            <button>Histórico Escolar</button>
+            <button (click)="baixarHistorico(candidato?.idHistoricoEscolar || 0)">Histórico Escolar</button>
         </div>
         <div class="avaliar">
             <button class="aprovar">Aprovar</button>
@@ -21,13 +21,3 @@
         </div>
     </div>
 </app-professor-layout>
-
-<!-- <div>
-    <h1>{{candidato?.nome}}</h1>
-    <h1>{{candidato?.email}}</h1>
-    <h1>{{candidato?.curso}}</h1>
-    <img src="{{candidato?.fotoPerfil}}" alt="">
-    <h1>{{candidato?.idHistoricoEscolar}}</h1>
-    <h1>{{candidato?.dataSolicitacao}}</h1>
-    <h1>{{candidato?.statusCandidatura}}</h1>
-</div> -->
