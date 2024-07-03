@@ -45,4 +45,19 @@ export class ProfessorService {
   baixarHistorico(idHistorico: number){
     return this.httpClient.get(`${this.apiUrl}/professor/historico/${idHistorico}`, {responseType: 'blob'});
   }
+
+  aprovarCandidatura(idMonitoria: number, idCandidato: number){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.httpClient.put<Candidato>(`${this.apiUrl}/professor/aprovar/${idCandidato}/${idMonitoria}`, {headers});
+  }
+
+  recusarCandidatura(idMonitoria: number, idCandidato: number){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.httpClient.put<Candidato>(`${this.apiUrl}/professor/recusar/${idCandidato}/${idMonitoria}`, {headers});
+  }
+  
 }

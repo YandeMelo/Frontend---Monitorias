@@ -16,8 +16,10 @@
             <button (click)="baixarHistorico(candidato?.idHistoricoEscolar || 0)">Histórico Escolar</button>
         </div>
         <div class="avaliar">
-            <button class="aprovar">Aprovar</button>
-            <button class="recusar">Recusar</button>
+            @if (candidato?.statusCandidatura === "AGUARDANDO_APROVACAO") {
+                <button (click)="aprovarCandidatura(idMonitoria, candidato?.id || 0)" class="aprovar">Aprovar</button>
+                <button (click)="recusarCandidatura(idMonitoria, candidato?.id || 0)" class="recusar">Recusar</button>
+            }
         </div>
     </div>
 </app-professor-layout>
