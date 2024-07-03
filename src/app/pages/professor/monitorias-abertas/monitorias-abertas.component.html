@@ -13,9 +13,9 @@
                     <li>Status: {{ monitoria.status | status}}</li>
                 </ul>
                 @if (monitoria.monitorNome || (monitoria.status !== "DISPONIVEL" && monitoria.status !== "SUSPENSA")) {
-                    <button class="candidatar">Avaliar</button>
+                    <button class="consultar">Avaliar</button>
                 } @else {
-                    <button (click)="handleConsultarMonitoriaRedirect(monitoria.id)" class="candidatar">Consultar</button>
+                    <button (click)="handleConsultarMonitoriaRedirect(monitoria.id)" class="consultar">Consultar</button>
                 }
             </div>
             }

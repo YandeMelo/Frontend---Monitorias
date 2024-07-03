@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class UploadService {
 
-  apiUrl: string = "https://monitorias-api.onrender.com";
+  private apiUrl: string = "https://monitorias-api.onrender.com";
 
   constructor(private httpClient: HttpClient) { }
 
