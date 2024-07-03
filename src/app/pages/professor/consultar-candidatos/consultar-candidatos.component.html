@@ -3,14 +3,14 @@
         @for (candidato of candidatos$ | paginate: { itemsPerPage: 12, currentPage: paginaAtual, totalItems: totalElements }; track candidato) {
             <div class="card">
                 <ul>
-                    <li>{{candidato.nome}}</li>
-                    <li>{{candidato.email}}</li>
-                    <li>{{candidato.curso | curso}}</li>
-                    <li>{{candidato.dataSolicitacao | date: "dd/MM/yyyy"}}</li>
-                    <li>{{candidato.statusCandidatura | status}}</li>
+                    <li>Nome: {{candidato.nome}}</li>
+                    <li>Email: {{candidato.email}}</li>
+                    <li>Curso: {{candidato.curso | curso}}</li>
+                    <li>Data da Solicitação: {{candidato.dataSolicitacao | date: "dd/MM/yyyy"}}</li>
+                    <li>Status: {{candidato.statusCandidatura | status}}</li>
                 </ul>
                 @if (candidato.statusCandidatura !== "CANCELADO") {
-                    <button class="avaliar">Avaliar</button>
+                    <button (click)="handleAvaliarRedirect(idMonitoria, candidato.id)" class="avaliar">Avaliar</button>
                 }
             </div>
         }

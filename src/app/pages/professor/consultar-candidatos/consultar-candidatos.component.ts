@@ -5,6 +5,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { CursoPipe } from '../../../pipes/curso.pipe';
 import { DatePipe } from '@angular/common';
 import { StatusPipe } from '../../../pipes/status.pipe';
+import { Router } from '@angular/router';
 
 export interface PageableResponseProfessor {
   content: Candidato[];
@@ -42,7 +43,9 @@ export class ConsultarCandidatosComponent {
   totalElements: number = 0;
   idMonitoria: number = 0;
 
-  constructor(private professorService: ProfessorService) {
+  constructor(private professorService: ProfessorService,
+              private router: Router
+  ) {
     
   }
 
@@ -63,5 +66,9 @@ export class ConsultarCandidatosComponent {
     },(error) => {
       console.error('Erro ao buscar monitorias', error);
     });
+  }
+
+  handleAvaliarRedirect(idMonitoria: number, idCandidato: number){
+    this.router.navigate(['professor/candidatos/avaliar'], {state: {idMonitoria, idCandidato}});
   }
 }

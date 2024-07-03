@@ -56,7 +56,8 @@ export class ConsultarMonitoriaComponent {
   }
   
   handleConsultarCandidatosRedirect(idMonitoria: number | undefined){
-    this.router.navigate(['/professor/monitorias/consultar/candidatos'],  {state: {idMonitoria}});
+    this.router.navigate(['/professor/monitorias/candidatos'],  {state: {idMonitoria}});
   }
+  
   
 }

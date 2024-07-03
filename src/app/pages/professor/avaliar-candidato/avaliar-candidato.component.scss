@@ -1,0 +1,87 @@
+
+.container {
+    height: 55vh;
+    width: 30vw;
+    border-radius: 5px;
+    background-color: rgb(248, 233, 233);
+    border: 5px solid #99baf8;
+    display: flex;
+    flex-direction: column;
+    margin-right: 100px;
+}
+
+.foto-perfil {
+    height: 40%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+        height: 90%;
+        width: 30%;
+        border-radius: 50%;
+    }
+}
+
+.candidato-info {
+    height: 75%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    ul, li {
+        font-size: 1.1rem;
+        text-decoration: none;
+        color: white;
+        list-style: none;
+        color: black;
+        padding: 2px;
+    }
+}
+
+.historico-escolar{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    button {
+        cursor: pointer;
+        height: 55%;
+        width: 30%;
+        background-color: #f3eae8;
+        border-radius: 5px;
+    }
+}
+
+
+
+.avaliar {
+    height: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+    button {
+        cursor: pointer;
+        height: 60%;
+        width: 30%;
+        background-color: #f3eae8;
+        border-radius: 35px;
+    }
+    .aprovar{
+        border: 3px solid #67ceab;
+    }
+    .recusar {
+        border: 3px solid #da6464;
+    }
+}
+
+::ng-deep main {
+    justify-content: center;
+    align-items: center;
+}

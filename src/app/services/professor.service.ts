@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { PageableResponseMonitoria } from '../pages/professor/monitorias-abertas/monitorias-abertas.component';
 import { PageableResponseProfessor } from '../pages/professor/consultar-candidatos/consultar-candidatos.component';
 import { Monitoria } from '../pages/aluno/monitorias-disponiveis/monitorias-disponiveis.component';
+import { Candidato } from '../pages/professor/avaliar-candidato/avaliar-candidato.component';
 
 
 @Injectable({
@@ -29,11 +30,15 @@ export class ProfessorService {
   consultarCandidatos(idMonitoria: number, page: number, size: number = 12): Observable<PageableResponseProfessor> {
     return this.httpClient.get<PageableResponseProfessor>(`${this.apiUrl}/professor/candidatos/${idMonitoria}?page=${page}&size=${size}`);
   }
-
+  
   cancelarMonitoria(idMonitoria:number): Observable<Monitoria>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
     return this.httpClient.put<Monitoria>(`${this.apiUrl}/monitorias/suspender/${idMonitoria}`, {headers});
+  }
+  
+  avaliarCandidato(idMonitoria: number, idCandidato: number): Observable<Candidato>{
+    return this.httpClient.get<Candidato>(`${this.apiUrl}/professor/avaliar/${idCandidato}/${idMonitoria}`);
   }
 }

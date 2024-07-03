@@ -12,6 +12,7 @@ import { AbrirMonitoriaComponent } from './pages/professor/abrir-monitoria/abrir
 import { MonitoriasAbertasComponent } from './pages/professor/monitorias-abertas/monitorias-abertas.component';
 import { ConsultarMonitoriaComponent } from './pages/professor/consultar-monitoria/consultar-monitoria.component';
 import { ConsultarCandidatosComponent } from './pages/professor/consultar-candidatos/consultar-candidatos.component';
+import { AvaliarCandidatoComponent } from './pages/professor/avaliar-candidato/avaliar-candidato.component';
 
 export const routes: Routes = [
     {
@@ -75,8 +76,16 @@ export const routes: Routes = [
         }
     },
     {
-        path: "professor/monitorias/consultar/candidatos",
+        path: "professor/monitorias/candidatos",
         component: ConsultarCandidatosComponent,
+        canActivate: [AuthGuard],
+        data: {
+            expectedRoles: ['ROLE_PROFESSOR']
+        }
+    },
+    {
+        path: "professor/candidatos/avaliar",
+        component: AvaliarCandidatoComponent,
         canActivate: [AuthGuard],
         data: {
             expectedRoles: ['ROLE_PROFESSOR']
