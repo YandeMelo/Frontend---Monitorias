@@ -15,4 +15,10 @@ export class ProfessorLayoutComponent {
   handleInicioRedirect(){
     this.router.navigate(['/professor']);
   }
+  handleAbrirMonitoriaRedirect(){
+    this.router.navigate(['professor/abrir']);
+  }
+  handleMonitoriasAbertasRedirect(){
+    this.router.navigate(['professor/monitorias']);
+  }
 }

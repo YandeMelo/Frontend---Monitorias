@@ -16,4 +16,10 @@ export class AlunoLayoutComponent {
   handleInicioRedirect(){
     this.router.navigate(['/aluno']);
   }
+  handleDisponiveisRedirect(){
+    this.router.navigate(['/aluno/monitorias']);
+  }
+  handleCandidaturaRedirect(){
+    this.router.navigate(['/aluno/candidatura']);
+  }
 }

@@ -1,25 +1,14 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProfessorLayoutComponent } from '../../../components/professor-layout/professor-layout.component';
 
 @Component({
   selector: 'app-home-professor',
   standalone: true,
-  imports: [],
+  imports: [ProfessorLayoutComponent],
   templateUrl: './home-professor.component.html',
   styleUrl: './home-professor.component.scss'
 })
 export class HomeProfessorComponent {
-
-  constructor(private router: Router) {
-    
-  }
-
-  handleAbrirMonitoriaRedirect(): void {
-    this.router.navigate(['professor/abrir']);
-  }
-
-  handleMonitoriasAbertasRedirect(): void {
-    this.router.navigate(['professor/monitorias']);
-  }
 
 }

@@ -1,9 +1,15 @@
 <body>
     <main>
         <div class="div-bg">
-            <section (click)="handleLoginRedirect()" onmouseover="this.style.opacity = '10%'" onmouseout="this.style.opacity = '0%'" class="login-section"></section>
+            <section class="login-section">
+                <h2 class="login">Entrar</h2>
+                <div (click)="handleLoginRedirect()" onmouseover="this.style.opacity = '10%'" onmouseout="this.style.opacity = '0%'" class="login-div"></div>
+            </section>
             <div class="bar"></div>
-            <section (click)="handleRegisterRedirect()" onmouseover="this.style.opacity = '10%'" onmouseout="this.style.opacity = '0%'"class="register-section"></section>
+            <section class="register-section">
+                <h2>Cadastrar</h2>
+                <div (click)="handleRegisterRedirect()" onmouseover="this.style.opacity = '10%'" onmouseout="this.style.opacity = '0%'"class="register-div"></div>
+            </section>
         </div>
     </main>
 </body>

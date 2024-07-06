@@ -24,6 +24,9 @@ export class LoginService {
   }
 
   register(nome: string, cpf: string, curso:string, email: string, password: string, fotoPerfil: string, ativo: boolean, dataDesativacao: void, tipoUsuario: string){
+    if (!fotoPerfil) {
+      fotoPerfil = "https://voxnews.com.br/wp-content/uploads/2017/04/unnamed.png";
+    }
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
