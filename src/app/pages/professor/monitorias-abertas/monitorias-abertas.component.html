@@ -1,26 +1,30 @@
 <app-professor-layout>
-    <div class="card-container">
-        @for (monitoria of monitorias$ | paginate: { itemsPerPage: 12, currentPage: paginaAtual, totalItems: totalElements }; track monitoria) {
-            <div class="card">
-                <ul>
-                    <li><strong>{{monitoria.disciplina.toUpperCase()}}</strong></li>
-                    <li>Professor: {{ monitoria.professorNome }}</li>
-                    @if (monitoria.monitorNome) {
-                        <li>Monitor: {{ monitoria.monitorNome }}</li>
+    @if (totalElements === 0) {
+        <div class="card">Nenhuma monitoria encontrada...</div>
+    } @else {
+        <div class="card-container">
+            @for (monitoria of monitorias$ | paginate: { itemsPerPage: 12, currentPage: paginaAtual, totalItems: totalElements }; track monitoria) {
+                <div class="card">
+                    <ul>
+                        <li><strong>{{monitoria.disciplina.toUpperCase()}}</strong></li>
+                        <li>Professor: {{ monitoria.professorNome }}</li>
+                        @if (monitoria.monitorNome) {
+                            <li>Monitor: {{ monitoria.monitorNome }}</li>
+                        }
+                        <li>Curso: {{ monitoria.curso | curso }}</li>
+                        <li>Semestre: {{ monitoria.semestre }}</li>
+                        <li>Status: {{ monitoria.status | status}}</li>
+                    </ul>
+                    @if (monitoria.monitorNome || (monitoria.status !== "DISPONIVEL" && monitoria.status !== "SUSPENSA")) {
+                        <button class="consultar" (click)="handleAvaliarMonitoriaRedirect(monitoria.id)">Avaliar</button>
+                    } @else {
+                        <button (click)="handleConsultarMonitoriaRedirect(monitoria.id)" class="consultar">Consultar</button>
                     }
-                    <li>Curso: {{ monitoria.curso | curso }}</li>
-                    <li>Semestre: {{ monitoria.semestre }}</li>
-                    <li>Status: {{ monitoria.status | status}}</li>
-                </ul>
-                @if (monitoria.monitorNome || (monitoria.status !== "DISPONIVEL" && monitoria.status !== "SUSPENSA")) {
-                    <button class="consultar">Avaliar</button>
-                } @else {
-                    <button (click)="handleConsultarMonitoriaRedirect(monitoria.id)" class="consultar">Consultar</button>
+                </div>
                 }
-            </div>
-            }
-    </div>
-    <div class="paginacao">
-        <pagination-controls (pageChange)="pageChange($event)" previousLabel="Anterior" nextLabel="Próximo"></pagination-controls>
-    </div>
+        </div>
+        <div class="paginacao">
+            <pagination-controls (pageChange)="pageChange($event)" previousLabel="Anterior" nextLabel="Próximo"></pagination-controls>
+        </div>
+    }
 </app-professor-layout>

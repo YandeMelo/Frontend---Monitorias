@@ -71,4 +71,7 @@ export class MonitoriasAbertasComponent {
   handleConsultarMonitoriaRedirect(idMonitoria: number){
     this.router.navigate(['/professor/monitorias/consultar'],  {state: {idMonitoria}});
   }
+  handleAvaliarMonitoriaRedirect(idMonitoria: number){
+    this.router.navigate(['/professor/monitorias/avaliar'],  {state: {idMonitoria}});
+  }
 }

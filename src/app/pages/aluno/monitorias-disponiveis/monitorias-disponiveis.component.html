@@ -1,19 +1,23 @@
 <app-aluno-layout>
-    <div class="card-container">
-        @for (monitoria of monitorias$ | paginate: { itemsPerPage: 12, currentPage: paginaAtual, totalItems: totalElements }; track monitoria) {
-            <div class="card">
-                <ul>
-                    <li><strong>{{monitoria.disciplina.toUpperCase()}}</strong></li>
-                    <li>Professor: {{ monitoria.professorNome }}</li>
-                    <li>Curso: {{ monitoria.curso | curso }}</li>
-                    <li>Semestre: {{ monitoria.semestre }}</li>
-                    <li>Status: {{ monitoria.status | status}}</li>
-                </ul>
-                <button (click)="handleCandidatarRedirect(monitoria.id)" class="candidatar">Candidatar</button>
-            </div>
-            }
-    </div>
-    <div class="paginacao">
-        <pagination-controls (pageChange)="pageChange($event)" previousLabel="Anterior" nextLabel="Próximo"></pagination-controls>
-    </div>
+    @if (totalElements === 0) {
+        <div class="card">Nenhuma monitoria encontrada...</div>
+    } @else {
+        <div class="card-container">
+            @for (monitoria of monitorias$ | paginate: { itemsPerPage: 12, currentPage: paginaAtual, totalItems: totalElements }; track monitoria) {
+                <div class="card">
+                    <ul>
+                        <li><strong>{{monitoria.disciplina.toUpperCase()}}</strong></li>
+                        <li>Professor: {{ monitoria.professorNome }}</li>
+                        <li>Curso: {{ monitoria.curso | curso }}</li>
+                        <li>Semestre: {{ monitoria.semestre }}</li>
+                        <li>Status: {{ monitoria.status | status}}</li>
+                    </ul>
+                    <button (click)="handleCandidatarRedirect(monitoria.id)" class="candidatar">Candidatar</button>
+                </div>
+                }
+        </div>
+        <div class="paginacao">
+            <pagination-controls (pageChange)="pageChange($event)" previousLabel="Anterior" nextLabel="Próximo"></pagination-controls>
+        </div>
+    }
 </app-aluno-layout>

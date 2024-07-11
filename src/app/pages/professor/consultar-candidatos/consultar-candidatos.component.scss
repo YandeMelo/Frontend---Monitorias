@@ -53,3 +53,8 @@ pagination-controls ::ng-deep .ngx-pagination .current{
     flex-wrap: wrap;
     gap: 20px;
 }
+
+::ng-deep main {
+    justify-content: center;
+    align-items: center;
+}

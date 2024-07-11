@@ -1,0 +1,27 @@
+<app-professor-layout>
+    <div class="container">
+        <div class="title">
+            <h2>{{monitoria?.disciplina?.toUpperCase()}}</h2>
+            <p>Curso: {{monitoria?.curso | curso}}</p>
+            <p>Professor: {{monitoria?.professorNome}}</p>
+            <p>Semestre: {{monitoria?.semestre}}</p>
+            <p>Status: {{monitoria?.status| status}}</p>
+        </div>
+        <div class="monitoria-info">
+            <div class="foto-perfil">
+                <img src="{{monitoria?.fotoPerfil}}">
+            </div>
+            <ul>
+                <li>Monitor: {{monitoria?.nome}}</li>
+                <li>Email: {{monitoria?.email}}</li>
+            </ul>
+            <div class="historico-escolar">
+                <button (click)="baixarHistorico(monitoria?.idHistoricoEscolar || 0)">Histórico Escolar</button>
+            </div>
+        </div>
+        <div class="concluir">
+            <button>Relatório da Monitoria</button>
+            <button>Concluir Monitoria</button>
+        </div>
+    </div>
+</app-professor-layout>

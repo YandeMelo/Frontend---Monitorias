@@ -5,6 +5,7 @@ import { PageableResponseMonitoria } from '../pages/professor/monitorias-abertas
 import { PageableResponseProfessor } from '../pages/professor/consultar-candidatos/consultar-candidatos.component';
 import { Monitoria } from '../pages/aluno/monitorias-disponiveis/monitorias-disponiveis.component';
 import { Candidato } from '../pages/professor/avaliar-candidato/avaliar-candidato.component';
+import { AvaliarMonitoria } from '../pages/professor/avaliar-monitoria/avaliar-monitoria.component';
 
 
 @Injectable({
@@ -21,6 +22,10 @@ export class ProfessorService {
       'Content-Type': 'application/json',
     });
     return this.httpClient.post(`${this.apiUrl}/monitorias/abrir`, {disciplina, semestre}, {headers});
+  }
+
+  avaliarMonitoria(idMonitoria: number): Observable<AvaliarMonitoria>{
+    return this.httpClient.get<AvaliarMonitoria>(`${this.apiUrl}/professor/monitoria/avaliar/${idMonitoria}`);
   }
 
   monitoriasAbertas(page: number, size: number = 12): Observable<PageableResponseMonitoria> {
