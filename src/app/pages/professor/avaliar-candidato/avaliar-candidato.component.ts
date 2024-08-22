@@ -45,7 +45,7 @@ infoCandidato(){
 }
 
 baixarHistorico(idHistorico: number) {
-  this.professorService.baixarHistorico(idHistorico).subscribe((result: Blob): void => {
+  this.professorService.baixarArquivo(idHistorico).subscribe((result: Blob): void => {
     const file = new Blob([result], {type: 'application/pdf'});
     const fileURL = URL.createObjectURL(file);
     window.open(fileURL);

@@ -7,7 +7,7 @@ import { tap } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl: string = "https://monitorias-api.onrender.com";
+  private apiUrl: string = "http://localhost:8080";
 
   constructor(private httpClient: HttpClient) { }
 

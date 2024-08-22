@@ -9,9 +9,21 @@
                 <li>Curso: {{monitoria?.monitoriaId?.curso | curso}}</li>
                 <li>Semestre: {{monitoria?.monitoriaId?.semestre}}</li>
                 <li>Data da Solicitação: {{monitoria?.dataSolicitacao | date: 'dd/MM/yyyy'}}</li>
-                <li>Status: {{monitoria?.statusCandidatura | status}}</li>
+                <li>Status da Monitoria: {{monitoria?.monitoriaId?.statusMonitoria | status}}</li>
+                <li>Status da Candidatura: {{monitoria?.statusCandidatura | status}}</li>
                 <li>Última Atualização: {{monitoria?.monitoriaId?.ultimaAtualizacao | date: 'dd/MM/yyyy'}}</li>
             </ul>
+        </div>
+        <div class="concluir">
+        @if (monitoria?.monitoriaId?.statusMonitoria === 'FINALIZADA') {
+            <button (click)="baixarArquivo(monitoria?.idRelatorio || 0)">Baixar Relatório</button>
+        } @else if (monitoria?.statusCandidatura === 'APROVADO' && monitoria?.monitoriaId?.statusMonitoria === 'ANDAMENTO' && monitoria?.idRelatorio === null){
+            <input class="arquivo" type="file" (change)="onFilechange($event); arquivoAdicionado=true" accept=".pdf">
+            <button [disabled]="!arquivoAdicionado" (click)="this.uploadRelatorio()">Enviar Relatório</button>
+        } @else if (monitoria?.idRelatorio !== null){
+            <h4>Relatório Enviado!</h4>
+            <h4>Aguardando resposta do professor...</h4>
+        }
         </div>
     </div>
 </app-aluno-layout>

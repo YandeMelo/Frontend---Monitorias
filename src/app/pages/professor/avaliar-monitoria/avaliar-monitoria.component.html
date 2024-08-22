@@ -17,11 +17,18 @@
             </ul>
             <div class="historico-escolar">
                 <button (click)="baixarHistorico(monitoria?.idHistoricoEscolar || 0)">Histórico Escolar</button>
+                @if (monitoria?.idRelatorioMonitoria !== null) {
+                    <button (click)="baixarHistorico(monitoria?.idRelatorioMonitoria || 0)">Relatório</button>
+                }
             </div>
         </div>
         <div class="concluir">
-            <button>Relatório da Monitoria</button>
-            <button>Concluir Monitoria</button>
+        @if (monitoria?.status !== 'FINALIZADA') {
+                <input class="arquivo" type="file" (change)="onFilechange($event); arquivoAdicionado=true" accept=".pdf">
+                <button [disabled]="!arquivoAdicionado" (click)="this.upload(monitoria?.alunoId || 0, monitoria?.idRelatorioMonitoria || 0, monitoria?.monitoriaId || 0)">Concluir Monitoria</button>
+            } @else {
+                <h2>Monitoria Finalizada.</h2>
+            }
         </div>
     </div>
 </app-professor-layout>

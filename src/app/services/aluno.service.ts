@@ -10,7 +10,7 @@ import { Candidatura } from '../pages/aluno/status-candidatura/status-candidatur
 })
 export class AlunoService {
 
-  private apiUrl: string = "https://monitorias-api.onrender.com";
+  private apiUrl: string = "http://localhost:8080";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -26,4 +26,7 @@ export class AlunoService {
     return this.httpClient.get<Candidatura>(`${this.apiUrl}/aluno/inscricao`);
   }
 
+  baixarArquivo(idArquivo: number){
+    return this.httpClient.get(`${this.apiUrl}/professor/historico/${idArquivo}`, {responseType: 'blob'});
+  }
 }

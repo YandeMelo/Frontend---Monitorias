@@ -13,7 +13,7 @@ import { AvaliarMonitoria } from '../pages/professor/avaliar-monitoria/avaliar-m
 })
 export class ProfessorService {
 
-  private apiUrl: string = "https://monitorias-api.onrender.com";
+  private apiUrl: string = "http://localhost:8080";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -47,8 +47,8 @@ export class ProfessorService {
     return this.httpClient.get<Candidato>(`${this.apiUrl}/professor/avaliar/${idCandidato}/${idMonitoria}`);
   }
   
-  baixarHistorico(idHistorico: number){
-    return this.httpClient.get(`${this.apiUrl}/professor/historico/${idHistorico}`, {responseType: 'blob'});
+  baixarArquivo(idArquivo: number){
+    return this.httpClient.get(`${this.apiUrl}/professor/historico/${idArquivo}`, {responseType: 'blob'});
   }
 
   aprovarCandidatura(idMonitoria: number, idCandidato: number){
