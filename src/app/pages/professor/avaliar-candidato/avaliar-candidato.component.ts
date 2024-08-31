@@ -28,7 +28,8 @@ export class AvaliarCandidatoComponent {
 
  candidato: Candidato | null = null;
  idMonitoria: number = 0;
-constructor(private professorService: ProfessorService,
+
+ constructor(private professorService: ProfessorService,
             private toastrService: ToastrService
 ) {}
 
@@ -68,5 +69,17 @@ recusarCandidatura(idCandidato: number, idMonitoria: number){
     })
 }
 
+imageToShow: any;
+
+createImageFromBlob(image: Blob) {
+  let reader = new FileReader();
+  reader.addEventListener("load", () => {
+     this.imageToShow = reader.result;
+  }, false);
+
+  if (image) {
+     reader.readAsDataURL(image);
+  }
+}
 
 }

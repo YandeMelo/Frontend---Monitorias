@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Monitoria, PageableResponseAluno } from '../pages/aluno/monitorias-disponiveis/monitorias-disponiveis.component';
 import { Candidatura } from '../pages/aluno/status-candidatura/status-candidatura.component';
+import { Aluno } from '../pages/aluno/perfil-aluno/perfil-aluno.component';
 
 
 @Injectable({
@@ -28,5 +29,9 @@ export class AlunoService {
 
   baixarArquivo(idArquivo: number){
     return this.httpClient.get(`${this.apiUrl}/professor/historico/${idArquivo}`, {responseType: 'blob'});
+  }
+
+  getUser(){
+    return this.httpClient.get<Aluno>(`${this.apiUrl}/aluno/user`);
   }
 }

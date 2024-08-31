@@ -1,0 +1,19 @@
+<app-professor-layout>
+    <div class="container">
+        <div class="professor-info">
+            <div class="foto-perfil">
+                <img src="{{fotoPerfil}}" alt="">
+                <button (click)="openDialog()">Mudar foto</button>
+            </div>
+                <ul>
+                    <li>Nome: {{professor?.nome}}</li>
+                    <li>Cpf: {{professor?.cpf}}</li>
+                    <li>Email: {{professor?.email}}</li>
+                    <li>Curso: {{professor?.curso | curso}}</li>
+                    <li>Ativo: {{professor?.ativo}}</li>
+                    <li>Data de Cadastro: {{professor?.dataCadastro | date: "dd/MM/yyyy"}}</li>
+                    <li>Última Atualização: {{professor?.ultimaAtualizacao | date: "dd/MM/yyyy"}}</li>
+                </ul>
+        </div>
+    </div>
+</app-professor-layout>

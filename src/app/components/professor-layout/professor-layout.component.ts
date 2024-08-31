@@ -21,4 +21,7 @@ export class ProfessorLayoutComponent {
   handleMonitoriasAbertasRedirect(){
     this.router.navigate(['professor/monitorias']);
   }
+  handlePerfilRedirect(){
+    this.router.navigate(['/professor/perfil']);
+  }
 }

@@ -1,0 +1,54 @@
+.container {
+    height: 55vh;
+    width: 29vw;
+    border-radius: 5px;
+    background-color: rgb(248, 233, 233);
+    border: 5px solid #99baf8;
+    display: flex;
+    flex-direction: column;
+    margin-right: 100px;
+}
+
+::ng-deep main {
+    justify-content: center;
+    align-items: center;
+}
+.foto-perfil {
+    height: 40%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    img {
+        height: 75%;
+        width: 30%;
+        border-radius: 50%;
+    }
+    button {
+        height: 15%;
+        width: 25%;
+        border-radius: 10px;
+        border: 3px solid rgb(40, 186, 253);
+    }
+}
+
+.professor-info {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    ul, li {
+        font-size: 1.1rem;
+        text-decoration: none;
+        color: white;
+        list-style: none;
+        color: black;
+        padding: 2px;
+    }
+}

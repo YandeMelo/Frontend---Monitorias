@@ -1,0 +1,19 @@
+<app-aluno-layout>
+    <div class="container">
+        <div class="aluno-info">
+            <div class="foto-perfil">
+                <img src="{{fotoPerfil}}" alt="">
+                <button (click)="openDialog()">Mudar foto</button>
+            </div>
+                <ul>
+                    <li>Nome: {{aluno?.nome}}</li>
+                    <li>Cpf: {{aluno?.cpf}}</li>
+                    <li>Email: {{aluno?.email}}</li>
+                    <li>Curso: {{aluno?.curso | curso}}</li>
+                    <li>Ativo: {{aluno?.ativo}}</li>
+                    <li>Data de Cadastro: {{aluno?.dataCadastro | date: "dd/MM/yyyy"}}</li>
+                    <li>Última Atualização: {{aluno?.ultimaAtualizacao | date: "dd/MM/yyyy"}}</li>
+                </ul>
+        </div>
+    </div>
+</app-aluno-layout>

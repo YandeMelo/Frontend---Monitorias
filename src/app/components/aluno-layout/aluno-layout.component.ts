@@ -22,4 +22,7 @@ export class AlunoLayoutComponent {
   handleCandidaturaRedirect(){
     this.router.navigate(['/aluno/candidatura']);
   }
+  handlePerfilRedirect(){
+    this.router.navigate(['/aluno/perfil']);
+  }
 }

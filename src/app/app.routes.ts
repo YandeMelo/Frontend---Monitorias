@@ -1,19 +1,21 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './pages/inicio/login/login.component';
-import { HomeComponent } from './pages/inicio/home/home.component';
-import { RegisterComponent } from './pages/inicio/register/register.component';
 import { AuthGuard } from './guards/auth.guard';
-import { HomeAlunoComponent } from './pages/aluno/home-aluno/home-aluno.component';
-import { HomeProfessorComponent } from './pages/professor/home-professor/home-professor.component';
-import { MonitoriasDisponiveisComponent } from './pages/aluno/monitorias-disponiveis/monitorias-disponiveis.component';
 import { CandidatarMonitoriaComponent } from './pages/aluno/candidatar-monitoria/candidatar-monitoria.component';
+import { HomeAlunoComponent } from './pages/aluno/home-aluno/home-aluno.component';
+import { MonitoriasDisponiveisComponent } from './pages/aluno/monitorias-disponiveis/monitorias-disponiveis.component';
 import { StatusCandidaturaComponent } from './pages/aluno/status-candidatura/status-candidatura.component';
+import { HomeComponent } from './pages/inicio/home/home.component';
+import { LoginComponent } from './pages/inicio/login/login.component';
+import { RegisterComponent } from './pages/inicio/register/register.component';
 import { AbrirMonitoriaComponent } from './pages/professor/abrir-monitoria/abrir-monitoria.component';
-import { MonitoriasAbertasComponent } from './pages/professor/monitorias-abertas/monitorias-abertas.component';
-import { ConsultarMonitoriaComponent } from './pages/professor/consultar-monitoria/consultar-monitoria.component';
-import { ConsultarCandidatosComponent } from './pages/professor/consultar-candidatos/consultar-candidatos.component';
 import { AvaliarCandidatoComponent } from './pages/professor/avaliar-candidato/avaliar-candidato.component';
 import { AvaliarMonitoriaComponent } from './pages/professor/avaliar-monitoria/avaliar-monitoria.component';
+import { ConsultarCandidatosComponent } from './pages/professor/consultar-candidatos/consultar-candidatos.component';
+import { ConsultarMonitoriaComponent } from './pages/professor/consultar-monitoria/consultar-monitoria.component';
+import { HomeProfessorComponent } from './pages/professor/home-professor/home-professor.component';
+import { MonitoriasAbertasComponent } from './pages/professor/monitorias-abertas/monitorias-abertas.component';
+import { PerfilAlunoComponent } from './pages/aluno/perfil-aluno/perfil-aluno.component';
+import { PerfilProfessorComponent } from './pages/professor/perfil-professor/perfil-professor.component';
 
 export const routes: Routes = [
     {
@@ -23,6 +25,14 @@ export const routes: Routes = [
     {
         path: "aluno",
         component: HomeAlunoComponent,
+        canActivate: [AuthGuard],
+        data: {
+            expectedRoles: ['ROLE_ALUNO']
+        }
+    },
+    {
+        path: "aluno/perfil",
+        component: PerfilAlunoComponent,
         canActivate: [AuthGuard],
         data: {
             expectedRoles: ['ROLE_ALUNO']
@@ -55,6 +65,14 @@ export const routes: Routes = [
     {
         path: "professor",
         component: HomeProfessorComponent,
+        canActivate: [AuthGuard],
+        data: {
+            expectedRoles: ['ROLE_PROFESSOR']
+        }
+    },
+    {
+        path: "professor/perfil",
+        component: PerfilProfessorComponent,
         canActivate: [AuthGuard],
         data: {
             expectedRoles: ['ROLE_PROFESSOR']

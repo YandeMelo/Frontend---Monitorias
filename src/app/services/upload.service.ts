@@ -29,4 +29,9 @@ export class UploadService {
     return this.httpClient.put(`${this.apiUrl}/professor/alterarRelatorio/${idAluno}/${idArquivo}/${idMonitoria}`, formData);
   }
 
+  public alterarImagem(imagem: File){
+    const formData: FormData = new FormData();
+    formData.append('file', imagem);
+    return this.httpClient.post(`${this.apiUrl}/api/arquivos/inserir`, formData, { responseType: 'text' });
+  }
 }

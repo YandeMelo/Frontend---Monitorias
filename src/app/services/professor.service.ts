@@ -6,6 +6,7 @@ import { PageableResponseProfessor } from '../pages/professor/consultar-candidat
 import { Monitoria } from '../pages/aluno/monitorias-disponiveis/monitorias-disponiveis.component';
 import { Candidato } from '../pages/professor/avaliar-candidato/avaliar-candidato.component';
 import { AvaliarMonitoria } from '../pages/professor/avaliar-monitoria/avaliar-monitoria.component';
+import { Professor } from '../pages/professor/perfil-professor/perfil-professor.component';
 
 
 @Injectable({
@@ -51,6 +52,10 @@ export class ProfessorService {
     return this.httpClient.get(`${this.apiUrl}/professor/historico/${idArquivo}`, {responseType: 'blob'});
   }
 
+  buscarFotoPerfil(fotoPerfil: string){
+    return this.httpClient.get(`${this.apiUrl}/api/arquivos/buscar/${fotoPerfil}`, {responseType: 'blob'});
+  }
+
   aprovarCandidatura(idMonitoria: number, idCandidato: number){
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -64,5 +69,9 @@ export class ProfessorService {
     });
     return this.httpClient.put<Candidato>(`${this.apiUrl}/professor/recusar/${idCandidato}/${idMonitoria}`, {headers});
   }
-  
+ 
+  getUser(){
+    return this.httpClient.get<Professor>(`${this.apiUrl}/professor/user`);
+  }
+
 }
