@@ -1,0 +1,9 @@
+<div class="container">
+    <form [formGroup]="senhaForm">
+        <label>Digite sua senha atual: </label>
+        <input type="password" formControlName="senhaAtual" (input)="onInput($event)">
+        <label>Digite a nova senha: </label>
+        <input type="password" formControlName="novaSenha" (input)="onInput($event)">
+    </form>
+    <button (click)="redefinirSenha()" class="confirmar">Confirmar</button>
+</div>

@@ -23,11 +23,12 @@
     flex-direction: column;
     gap: 10px;
     img {
-        height: 75%;
-        width: 30%;
+        height: 60%;
+        width: 25%;
         border-radius: 50%;
     }
     button {
+        cursor: pointer;
         height: 15%;
         width: 25%;
         border-radius: 10px;

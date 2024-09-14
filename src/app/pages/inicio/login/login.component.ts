@@ -6,6 +6,8 @@ import { LoginService } from '../../../services/login.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material/dialog';
+import { RecuperarSenhaComponent } from '../../../components/recuperar-senha/recuperar-senha.component';
 
 interface LoginForm {
   email: FormControl,
@@ -23,11 +25,13 @@ interface LoginForm {
 export class LoginComponent {
 
   loginForm!: FormGroup<LoginForm>;
+
   constructor (
     private loginService: LoginService,
     private router: Router,
     private authService: AuthService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private dialog: MatDialog
   ){
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -46,6 +50,13 @@ export class LoginComponent {
         this.toastrService.success("Login feito com sucesso!")
       },
       error: () => this.toastrService.error("Email ou Senha incorreto(a)!")
+    });
+  }
+
+  recuperarSenha(){
+    this.dialog.closeAll();
+    const dialogRef = this.dialog.open(RecuperarSenhaComponent,{
+      
     });
   }
 }

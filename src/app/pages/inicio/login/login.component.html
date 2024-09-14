@@ -3,6 +3,6 @@
     <form [formGroup]="loginForm">
         <app-login-input formControlName = "email" titleName="Email" formName="email" type="email" placeholder="yanmelo@gmail.com"></app-login-input>
         <app-login-input formControlName = "password" titleName="Senha" formName="password" type="password" placeholder="Digite sua senha"></app-login-input>
-        <span>Esqueceu sua senha?</span>
+        <span (click)="recuperarSenha()">Esqueceu sua senha?</span>
     </form>
 </app-login-layout>

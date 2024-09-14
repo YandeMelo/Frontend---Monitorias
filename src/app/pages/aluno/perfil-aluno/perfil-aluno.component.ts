@@ -5,6 +5,7 @@ import { AlterarImagemComponent } from '../../../components/alterar-imagem/alter
 import { AlunoLayoutComponent } from '../../../components/aluno-layout/aluno-layout.component';
 import { CursoPipe } from '../../../pipes/curso.pipe';
 import { AlunoService } from '../../../services/aluno.service';
+import { RedefinirSenhaComponent } from '../../../components/redefinir-senha/redefinir-senha.component';
 
 export interface Aluno {
   id: string,
@@ -41,13 +42,20 @@ export class PerfilAlunoComponent {
     })
   }
 
-  public openDialog() {
+  public openDialogFoto() {
     this.dialog.closeAll();
     const dialogRef = this.dialog.open(AlterarImagemComponent, {
       position: { right: '33%' }
     });
     dialogRef.componentInstance.imagemNova.subscribe((novaImagem: string) => {
       this.fotoPerfil = novaImagem;
+    });
+  }
+
+  public openDialogSenha() {
+    this.dialog.closeAll();
+    const dialogRef = this.dialog.open(RedefinirSenhaComponent, {
+      position: { right: '33%' }
     });
   }
 

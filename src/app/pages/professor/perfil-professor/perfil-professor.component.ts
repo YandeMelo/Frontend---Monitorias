@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AlterarImagemComponent } from '../../../components/alterar-imagem/alterar-imagem.component';
 import { CursoPipe } from '../../../pipes/curso.pipe';
 import { DatePipe } from '@angular/common';
+import { RedefinirSenhaComponent } from '../../../components/redefinir-senha/redefinir-senha.component';
 
 export interface Professor {
   id: string,
@@ -41,13 +42,20 @@ export class PerfilProfessorComponent {
     })
   }
 
-  public openDialog() {
+  public openDialogFoto() {
     this.dialog.closeAll();
     const dialogRef = this.dialog.open(AlterarImagemComponent, {
       position: { right: '33%' }
     });
     dialogRef.componentInstance.imagemNova.subscribe((novaImagem: string) => {
       this.fotoPerfil = novaImagem;
+    });
+  }
+
+  public openDialogSenha() {
+    this.dialog.closeAll();
+    const dialogRef = this.dialog.open(RedefinirSenhaComponent, {
+      position: { right: '33%' }
     });
   }
 

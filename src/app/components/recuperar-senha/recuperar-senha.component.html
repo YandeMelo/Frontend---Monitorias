@@ -1,0 +1,23 @@
+<div class="container">
+    @if (!codigoGerado && !codigoVerificado) {
+        <label>Email para recuperar senha: </label>
+        <form [formGroup]="codigoForm">
+            <input formControlName="email" (input)="onInput($event)">
+        </form>
+        <button (click)="gerarCodigo()" class="confirmar">Confirmar</button>
+    } @else if (codigoGerado && !codigoVerificado) {
+        <label>Digite o código: </label>
+        <form [formGroup]="codigoForm">
+            <input formControlName="codigoRecuperacaoSenha" (input)="onInput($event)">
+        </form>
+        <button (click)="verificarCodigo()" class="confirmar">Confirmar</button>
+    } @else {
+        <form [formGroup]="codigoForm">
+            <label>Digite a nova senha: </label>
+            <input type="password" formControlName="novaSenha" (input)="onInput($event)">
+            <label>Confirmar senha: </label>
+            <input type="password" formControlName="confirmarSenha" (input)="onInput($event)">
+        </form>
+        <button (click)="alterarSenha()" class="confirmar">Confirmar</button>
+    }
+</div>
